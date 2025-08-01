@@ -92,6 +92,18 @@
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 font-sans text-gray-800 flex flex-col">
 
+    <!-- UK Purchase Notice: Fixed at the top, visible by default, with a close button -->
+    <div id="uk-notice" class="bg-red-600 text-white text-center py-3 px-4 fixed top-0 left-0 w-full z-[10000] shadow-xl flex items-center justify-center">
+        <p class="font-semibold text-sm md:text-base flex-grow">
+            Purchases from the UK are no longer available due to privacy-disobeying laws.
+        </p>
+        <button id="close-uk-notice" class="ml-4 text-white hover:text-gray-200 transition-colors duration-200 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
     <!-- Hamburger Icon: Fixed at the top-left to open the sidebar -->
     <button id="open-sidebar" class="fixed top-4 left-4 z-40 p-3 rounded-full bg-indigo-600 text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 transition duration-300 hover:bg-indigo-700">
         <!-- Hamburger SVG icon -->
@@ -291,6 +303,8 @@
             const contactModal = document.getElementById('contact-modal');
             const closeModalBtn = document.getElementById('close-modal');
             const customPCCard = document.getElementById('custom-pc-card'); // Get the custom PC card
+            const ukNotice = document.getElementById('uk-notice');
+            const closeUkNoticeBtn = document.getElementById('close-uk-notice');
 
             // Function to open the sidebar
             function openSidebar() {
@@ -337,6 +351,13 @@
             // Event listener for the custom PC card to open the contact modal
             if (customPCCard) {
                 customPCCard.addEventListener('click', openContactModal);
+            }
+
+            // Event listener for the UK notice close button
+            if (closeUkNoticeBtn) {
+                closeUkNoticeBtn.addEventListener('click', function() {
+                    ukNotice.style.display = 'none';
+                });
             }
 
             // --- Scroll Prompt Visibility Logic ---
